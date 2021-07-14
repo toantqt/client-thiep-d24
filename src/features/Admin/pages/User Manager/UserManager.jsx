@@ -29,22 +29,18 @@ export default function UserManager(props) {
     props.handleLoading(false);
   }, [reload]);
 
-  const rows = user
-    .sort((a, b) => {
-      return new Date(b.news.created) - new Date(a.news.created);
-    })
-    .map((e, index) => {
-      return {
-        id: index,
-        fullName: e.user.fullName,
-        phoneNumber: e.user.phoneNumber,
-        address: e.user.address,
-        code: e.code.shareCode,
-        approved: e.user.approved,
-        created: formatDate(e.createdAt),
-        action: e.user,
-      };
-    });
+  const rows = user.map((e, index) => {
+    return {
+      id: index,
+      fullName: e.user.fullName,
+      phoneNumber: e.user.phoneNumber,
+      address: e.user.address,
+      code: e.code.shareCode,
+      approved: e.user.approved,
+      created: formatDate(e.createdAt),
+      action: e.user,
+    };
+  });
 
   const columns = [
     { field: "fullName", headerName: "Tên", width: 160 },

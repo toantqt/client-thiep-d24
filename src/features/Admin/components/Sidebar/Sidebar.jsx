@@ -30,7 +30,7 @@ export default function SideBar(props) {
 
   const [param, setParam] = React.useState("overview");
   const [open, setOpen] = React.useState(true);
-  const [open1, setOpen1] = React.useState(true);
+  const [open1, setOpen1] = React.useState(false);
   const [open2, setOpen2] = React.useState(true);
 
   const handleClickSlug = (param, url) => {

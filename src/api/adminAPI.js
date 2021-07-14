@@ -66,3 +66,29 @@ export const getProduct = async (type) => {
       return error.message;
     });
 };
+
+export const getAllOrder = async (type) => {
+  return await axios
+    .get(`${url}/get-all-order`, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
+
+export const updateOrder = async (data) => {
+  return await axios
+    .post(`${url}/update-order`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
