@@ -3,8 +3,8 @@ import { getAccessToken } from "../auth/auth";
 import jwt_decode from "jwt-decode";
 import { getRole } from "../auth/auth";
 
-// const url = "https://server-thiepd24.herokuapp.com";
-const url = "http://localhost:6688";
+const url = "https://server-thiepd24.herokuapp.com";
+// const url = "http://localhost:6688";
 
 export const login = async (data) => {
   return await axios
