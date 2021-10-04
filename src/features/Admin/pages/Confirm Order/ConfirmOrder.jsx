@@ -16,7 +16,7 @@ export default function ConfirmOrder(props) {
   const [reload, setReload] = useState(false);
   useEffect(async () => {
     props.handleLoading(true);
-    await getAllOrder(true).then((res) => {
+    await getAllOrder(false).then((res) => {
       console.log(res.data);
       setOrder(res.data);
       props.handleLoading(false);
@@ -37,19 +37,23 @@ export default function ConfirmOrder(props) {
     setReload(!reload);
   };
 
-  const rows = order.map((e, index) => {
-    return {
-      id: index,
-      name: e.order.contact?.name,
-      phoneNumber: e.order.contact?.phoneNumber,
-      image: e.card.image,
-      price: e.order.amount,
-      shareCode: e.order.shareCode,
-      voucher: e.order.voucher?.title,
-      status: e.order.confirm,
-      action: e,
-    };
-  });
+  const rows = order
+    .filter((order) => {
+      return !order.order.confirm;
+    })
+    .map((e, index) => {
+      return {
+        id: index,
+        name: e.order.contact?.name,
+        phoneNumber: e.order.contact?.phoneNumber,
+        image: e.card.image,
+        price: e.order.amount,
+        shareCode: e.order.shareCode,
+        voucher: e.order.voucher?.title,
+        status: e.order.confirm,
+        action: e,
+      };
+    });
 
   const columns = [
     { field: "name", headerName: "Khách hàng", width: 200 },
@@ -62,8 +66,7 @@ export default function ConfirmOrder(props) {
       headerName: "Trạng thái",
       width: 130,
       renderCell: (action) => {
-        console.log(action);
-        if (action.row.action.order.confirm) {
+        if (action.row.action.confirm) {
           return (
             <Chip
               label="Đã xác nhận"
@@ -102,7 +105,7 @@ export default function ConfirmOrder(props) {
   return (
     <Grid>
       <div className="header-title">
-        <span>Đơn đặt hàng đã xác nhận: ({rows.length})</span>
+        <span>Đơn đặt hàng đang chờ xác nhận: ({rows.length})</span>
       </div>
 
       <div className="mt-3">

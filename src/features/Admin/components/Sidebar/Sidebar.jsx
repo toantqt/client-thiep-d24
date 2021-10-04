@@ -11,8 +11,17 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import slug from "../../../../resources/slug";
+import Divider from "@material-ui/core/Divider";
+import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
+import StoreIcon from "@material-ui/icons/Store";
+import PersonIcon from "@material-ui/icons/Person";
+import CategoryIcon from "@material-ui/icons/Category";
 import "./sidebar.css";
-
+import LoyaltyIcon from "@material-ui/icons/Loyalty";
+import LocalGroceryStoreIcon from "@material-ui/icons/LocalGroceryStore";
+import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
+import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
+import SettingsIcon from "@material-ui/icons/Settings";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -37,6 +46,7 @@ export default function SideBar(props) {
     setParam(param);
     history.push(url);
   };
+
   const handleClickSlugProduct = (param, url) => {
     setParam(param);
     history.push({
@@ -81,7 +91,7 @@ export default function SideBar(props) {
         onClick={() => handleClickSlugProduct(e, slug.productManager)}
       >
         <ListItemIcon>
-          <AssignmentIndIcon />
+          <LoyaltyIcon />
         </ListItemIcon>
         <ListItemText primary={e} />
       </ListItem>
@@ -95,42 +105,40 @@ export default function SideBar(props) {
     <List style={{ padding: "0px !important" }}>
       <ListItem button onClick={handleClick}>
         <ListItemIcon>
-          <InsertChartIcon />
+          <SupervisorAccountIcon />
         </ListItemIcon>
-        <ListItemText primary="Đại lý" />
+        <ListItemText primary="Tài khoản" />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItem
             button
-            className={
-              classes.nested + (param == "userManager" ? " active" : "")
-            }
-            onClick={() => handleClickSlug("userManager", slug.userManager)}
+            className={classes.nested + (param == true ? " active" : "")}
+            onClick={() => handleClickSlug(true, slug.userManager)}
           >
             <ListItemIcon>
-              <AssignmentIndIcon />
+              <StoreIcon />
             </ListItemIcon>
-            <ListItemText primary="Tất cả" />
+            <ListItemText primary="Đại lý" />
           </ListItem>
 
           <ListItem
             button
-            className={classes.nested + (param == "approved" ? " active" : "")}
-            onClick={() => handleClickSlug("approved", slug.approveUser)}
+            className={classes.nested + (param == false ? " active" : "")}
+            onClick={() => handleClickSlug(false, slug.approveUser)}
           >
             <ListItemIcon>
-              <AssignmentIndIcon />
+              <PersonIcon />
             </ListItemIcon>
-            <ListItemText primary="Chờ xác thực" />
+            <ListItemText primary="Khách hàng" />
           </ListItem>
         </List>
       </Collapse>
 
       <ListItem button onClick={handleClick1}>
         <ListItemIcon>
-          <InsertChartIcon />
+          <CategoryIcon />
         </ListItemIcon>
         <ListItemText primary="Sản phẩm" />
         {open1 ? <ExpandLess /> : <ExpandMore />}
@@ -142,7 +150,7 @@ export default function SideBar(props) {
       </Collapse>
       <ListItem button onClick={handleClick2}>
         <ListItemIcon>
-          <InsertChartIcon />
+          <LocalGroceryStoreIcon />
         </ListItemIcon>
         <ListItemText primary="Đặt hàng" />
         {open2 ? <ExpandLess /> : <ExpandMore />}
@@ -157,23 +165,36 @@ export default function SideBar(props) {
             onClick={() => handleClickSlug("orderManager", slug.orderManager)}
           >
             <ListItemIcon>
-              <AssignmentIndIcon />
+              <CheckCircleOutlineIcon />
             </ListItemIcon>
-            <ListItemText primary="Tất cả" />
+            <ListItemText primary="Đã xác nhận" />
           </ListItem>
-
           <ListItem
             button
-            className={classes.nested + (param == "approved" ? " active" : "")}
-            onClick={() => handleClickSlug("approved", slug.approvedAuthor)}
+            className={
+              classes.nested + (param == "confrimOrder" ? " active" : "")
+            }
+            onClick={() => handleClickSlug("confrimOrder", slug.confrimOrder)}
           >
             <ListItemIcon>
-              <AssignmentIndIcon />
+              <HourglassEmptyIcon />
             </ListItemIcon>
             <ListItemText primary="Chờ xác nhận" />
           </ListItem>
         </List>
       </Collapse>
+      <Divider />
+
+      <ListItem
+        button
+        onClick={() => handleClickSlug("configManager", slug.configManager)}
+        className={param == "configManager" ? " active" : ""}
+      >
+        <ListItemIcon>
+          <SettingsIcon />
+        </ListItemIcon>
+        <ListItemText primary="Cấu hình" />
+      </ListItem>
     </List>
     // </div>
   );

@@ -13,6 +13,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Header from "../../components/Header/Header";
+import "./home.css";
 
 const drawerWidth = 240;
 
@@ -47,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
+    backgroundColor: "#fafafa !important",
   },
 }));
 

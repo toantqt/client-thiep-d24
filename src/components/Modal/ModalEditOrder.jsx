@@ -13,6 +13,7 @@ import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import { updateOrder } from "../../api/adminAPI";
+import { DataGrid } from "@material-ui/data-grid";
 
 const styles = (theme) => ({
   root: {
@@ -78,23 +79,34 @@ export default function ModalEditOrder(props) {
     const data = {
       orderID: props.data?.order?._id,
       confirm: checked,
-      quantity: quantity,
-      amount: amount,
     };
-    console.log(data);
-    if (
-      data.quantity === props.data?.order?.quantity &&
-      data.amount === props.data?.order?.amount &&
-      data.confirm === props.data?.order?.confirm
-    ) {
+    if (data.confirm === props?.data?.order?.confirm) {
       props.handleClose();
-    } else if (data.quantity && data.amount) {
+    } else {
       await updateOrder(data).then((res) => {
         props.handleReload();
       });
-    } else {
-      alert("Dữ liệu không được để trống");
     }
+    // const data = {
+    //   orderID: props.data?.order?._id,
+    //   confirm: checked,
+    //   quantity: quantity,
+    //   amount: amount,
+    // };
+    // console.log(data);
+    // if (
+    //   data.quantity === props.data?.order?.quantity &&
+    //   data.amount === props.data?.order?.amount &&
+    //   data.confirm === props.data?.order?.confirm
+    // ) {
+    //   props.handleClose();
+    // } else if (data.quantity && data.amount) {
+    //   await updateOrder(data).then((res) => {
+    //     props.handleReload();
+    //   });
+    // } else {
+    //   alert("Dữ liệu không được để trống");
+    // }
   };
 
   const handleChangeInput = (event) => {
@@ -105,83 +117,148 @@ export default function ModalEditOrder(props) {
       setAmount(value);
     }
   };
+
+  const rows = props?.data?.card?.map((e, index) => {
+    return {
+      id: e.cardID,
+      image: e.image,
+      quantity: e.quantity,
+      amount: e.amount,
+    };
+  });
+  console.log("row", rows);
+
+  const columns = [
+    { field: "id", headerName: "ID", width: 150 },
+    {
+      field: "image",
+      headerName: "Hình ảnh",
+      width: 300,
+      renderCell: (image) => {
+        return (
+          <div
+            style={{
+              width: "90%",
+              margin: "0 auto",
+            }}
+          >
+            <img src={image.row.image} alt="" width="50%" />
+          </div>
+        );
+      },
+    },
+    { field: "quantity", headerName: "Số lượng", width: 180 },
+    { field: "amount", headerName: "Tổng tiền", width: 200 },
+
+    // {
+    //   field: "action",
+    //   headerName: "Chức năng ",
+    //   width: 130,
+    //   renderCell: (action) => {
+    //     return (
+    //       <IconButton
+    //         variant="contained"
+    //         style={{ color: "blue" }}
+    //         onClick={() => {
+    //           handleClick(action);
+    //         }}
+    //       >
+    //         <EditIcon />
+    //       </IconButton>
+    //     );
+    //   },
+    // },
+  ];
   return (
     <div>
-      <Dialog onClose={props.handleClose} open={props.open}>
+      <Dialog
+        fullWidth={true}
+        maxWidth="md"
+        onClose={props.handleClose}
+        open={props.open}
+      >
         <DialogTitle onClose={props.handleClose}>
           Cập nhật đơn đặt hàng
         </DialogTitle>
         <DialogContent dividers>
-          <div style={{ width: "550px" }}>
-            <h5>Chi tiết đơn đặt hàng: </h5>
-            <Grid container spacing={1}>
-              <Grid item xs={6} className="details-order">
-                <div>
-                  <span>Khách hàng: {props.data?.order?.contact.name}</span>
-                </div>
-                <div>
-                  <span>
-                    Điện thoại: {props.data?.order?.contact.phoneNumber}
-                  </span>
-                </div>
-                <hr />
-                <div>
-                  <span>Mã chia sẻ: {props.data?.order?.shareCode}</span>
-                </div>
-                <div>
-                  <span>Voucher: {props.data?.order?.voucher.title}</span>
-                </div>
-                <hr />
-                <div>
-                  <span>Mã sản phẩm: {props.data?.card?.id}</span>
-                </div>
-                <div>
-                  <span>Giá tiền: {props.data?.card?.price}</span>
-                </div>
-                <hr />
-
-                <div>
-                  <span className="pt-5">Số lượng: </span>
-                  <div>
-                    <TextField
-                      defaultValue={props.data?.order?.quantity}
-                      onChange={handleChangeInput}
-                      name="quantity"
-                    />
-                  </div>
-                </div>
-                <div className="mt-2">
-                  <span>Tổng tiền: </span>
-                  <div>
-                    <TextField
-                      defaultValue={props.data?.order?.amount}
-                      onChange={handleChangeInput}
-                      name="amount"
-                    />
-                  </div>
-                </div>
-                <hr />
-                <div>
-                  <span>Tình trạng đơn:</span>
-                  <div>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          name="gilad"
-                          checked={checked}
-                          onChange={handleChangeConfirm}
-                        />
-                      }
-                      label="Đã xác nhận"
-                    />
-                  </div>
-                </div>
-              </Grid>
-              <Grid item xs={6}>
-                <img src={props.data?.card?.image} alt="" width="100%" />
-              </Grid>
+          <h5>Chi tiết đơn đặt hàng: </h5>
+          <Grid container spacing={1} className="mt-3">
+            <Grid item lg={6} md={6} xs={12} className="details-order">
+              <div>
+                <span>Khách hàng: {props.data?.order?.contact.name}</span>
+              </div>
+              <div>
+                <span>
+                  Điện thoại: {props.data?.order?.contact.phoneNumber}
+                </span>
+              </div>
             </Grid>
-          </div>
+            <Grid item lg={6} md={6} xs={12} className="details-order">
+              <div>
+                <span>Mã chia sẻ: {props.data?.order?.shareCode}</span>
+              </div>
+              <div>
+                <span>Voucher: {props.data?.order?.voucher.title}</span>
+              </div>
+            </Grid>
+            <Grid item lg={12} md={12} xs={12} className="mt-3">
+              <div style={{ height: "300px", width: "100%" }}>
+                <DataGrid
+                  rows={rows}
+                  columns={columns}
+                  pageSize={5}
+                  disableColumnMenu={true}
+                  rowHeight="130"
+                />
+              </div>
+              <div className="mt-2" style={{ float: "right" }}>
+                <span
+                  style={{
+                    lineHeight: 2,
+                    fontSize: "18px",
+                    color: "red",
+                    fontWeight: "500",
+                  }}
+                  className="mr-2"
+                >
+                  Tổng tiền:{" "}
+                </span>
+                <TextField
+                  defaultValue={props.data?.order?.amount}
+                  onChange={handleChangeInput}
+                  name="amount"
+                />
+              </div>
+            </Grid>
+
+            <div>
+              <span
+                style={{
+                  lineHeight: 2,
+                  fontSize: "18px",
+                  color: "blue",
+                  fontWeight: "500",
+                }}
+              >
+                Tình trạng đơn:
+              </span>
+              <div>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      name="gilad"
+                      checked={checked}
+                      onChange={handleChangeConfirm}
+                    />
+                  }
+                  label="Đã xác nhận"
+                />
+              </div>
+            </div>
+            <Grid item xs={6}>
+              <img src={props.data?.card?.image} alt="" width="100%" />
+            </Grid>
+          </Grid>
         </DialogContent>
         <DialogActions>
           <Button autoFocus color="primary" onClick={handleSumbit}>

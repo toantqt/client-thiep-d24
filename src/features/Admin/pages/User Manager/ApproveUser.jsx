@@ -108,7 +108,7 @@ export default function ApproveUser(props) {
   return (
     <Grid>
       <div className="header-title">
-        <span>Xác thực đại lý:</span>
+        <span>Quản lý khách hàng:</span>
       </div>
       <div className="mt-3">
         <TableComponent rows={rows} columns={columns} />

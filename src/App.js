@@ -1,10 +1,10 @@
-import { Route, Redirect, BrowserRouter } from "react-router-dom";
+import { Route, Redirect, HashRouter } from "react-router-dom";
 import LoginPage from "./features/Login/pages/LoginPage";
 import { isLoggedIn, checkRole } from "./auth/auth";
 import HomePage from "./features/Admin/pages/Home/HomePage";
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Route exact path="/" component={LoginPage}></Route>
       <Route
         path="/admin"
@@ -12,11 +12,11 @@ function App() {
           isLoggedIn() && checkRole("admin") ? (
             <HomePage />
           ) : (
-            <Redirect to="/auth/login" />
+            <Redirect to="/" />
           )
         }
       ></Route>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

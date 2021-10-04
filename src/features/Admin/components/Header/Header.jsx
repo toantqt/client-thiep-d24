@@ -24,7 +24,7 @@ export default function Header(props) {
   };
   const handleLogout = () => {
     localStorage.clear();
-    window.location.reload();
+    history.push("/admin");
   };
 
   return (
