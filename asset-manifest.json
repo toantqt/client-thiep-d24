@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/client-thiep-d24/static/css/main.5c0433d4.chunk.css",
+    "main.js": "/client-thiep-d24/static/js/main.a0f98f02.chunk.js",
+    "main.js.map": "/client-thiep-d24/static/js/main.a0f98f02.chunk.js.map",
+    "runtime-main.js": "/client-thiep-d24/static/js/runtime-main.b5578dad.js",
+    "runtime-main.js.map": "/client-thiep-d24/static/js/runtime-main.b5578dad.js.map",
+    "static/js/2.db185c88.chunk.js": "/client-thiep-d24/static/js/2.db185c88.chunk.js",
+    "static/js/2.db185c88.chunk.js.map": "/client-thiep-d24/static/js/2.db185c88.chunk.js.map",
+    "static/js/3.c5f346c2.chunk.js": "/client-thiep-d24/static/js/3.c5f346c2.chunk.js",
+    "static/js/3.c5f346c2.chunk.js.map": "/client-thiep-d24/static/js/3.c5f346c2.chunk.js.map",
+    "index.html": "/client-thiep-d24/index.html",
+    "static/css/main.5c0433d4.chunk.css.map": "/client-thiep-d24/static/css/main.5c0433d4.chunk.css.map",
+    "static/js/2.db185c88.chunk.js.LICENSE.txt": "/client-thiep-d24/static/js/2.db185c88.chunk.js.LICENSE.txt",
+    "static/media/loading.be537609.gif": "/client-thiep-d24/static/media/loading.be537609.gif",
+    "static/media/logomenu.b1f8cc1b.png": "/client-thiep-d24/static/media/logomenu.b1f8cc1b.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b5578dad.js",
+    "static/js/2.db185c88.chunk.js",
+    "static/css/main.5c0433d4.chunk.css",
+    "static/js/main.a0f98f02.chunk.js"
+  ]
+}
