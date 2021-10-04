@@ -1,5 +1,6 @@
 {
   "name": "client-thiep-d24",
+  "homepage": "https://toantqt.github.io/client-thiep-d24/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,6 +13,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
+    "gh-pages": "^3.2.3",
     "jwt-decode": "^3.1.2",
     "material-ui-image": "^3.3.2",
     "moment": "^2.29.1",
@@ -29,7 +31,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
