@@ -3,8 +3,8 @@ import { getAccessToken } from "../auth/auth";
 import jwt_decode from "jwt-decode";
 import { getRole } from "../auth/auth";
 
-const url = "https://server-thiepd24.herokuapp.com";
-// const url = "http://localhost:6688";
+// const url = "https://server-thiepd24.herokuapp.com";
+const url = "http://localhost:6688";
 
 export const login = async (data) => {
   return await axios
@@ -129,6 +129,7 @@ export const updateCard = async (data) => {
   }
   formData.append("cardID", data.cardID);
   formData.append("id", data.id);
+  formData.append("size", data.size);
   formData.append("price", data.price);
   formData.append("quantity", data.quantity);
   formData.append("item", JSON.stringify(data.item));
@@ -174,6 +175,75 @@ export const updatePointConfig = async (data) => {
 export const getCountPage = async (type) => {
   return await axios
     .get(`${url}/get-count-card/${type}`, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
+
+export const getAllGift = async () => {
+  return await axios
+    .get(`${url}/get-point-gift`, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
+
+export const addGift = async (data) => {
+  return await axios
+    .post(`${url}/add-gift`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
+
+export const deleteGift = async (giftID) => {
+  return await axios
+    .post(
+      `${url}/delete-gift/${giftID}`,
+      {},
+      {
+        headers: { Authorization: `${getAccessToken()}` },
+      }
+    )
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
+
+export const getDetailsGift = async (giftID) => {
+  return await axios
+    .get(`${url}/get-details-gift/${giftID}`, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
+
+export const editGift = async (data) => {
+  return await axios
+    .post(`${url}/edit-gift`, data, {
       headers: { Authorization: `${getAccessToken()}` },
     })
     .then((res) => {

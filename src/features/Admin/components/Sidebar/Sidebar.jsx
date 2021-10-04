@@ -22,6 +22,8 @@ import LocalGroceryStoreIcon from "@material-ui/icons/LocalGroceryStore";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
 import SettingsIcon from "@material-ui/icons/Settings";
+import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
+import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -184,7 +186,26 @@ export default function SideBar(props) {
         </List>
       </Collapse>
       <Divider />
-
+      <ListItem
+        button
+        onClick={() => handleClickSlug("voucherManager", slug.voucherManager)}
+        className={param == "voucherManager" ? " active" : ""}
+      >
+        <ListItemIcon>
+          <LocalOfferIcon />
+        </ListItemIcon>
+        <ListItemText primary="Voucher" />
+      </ListItem>
+      <ListItem
+        button
+        onClick={() => handleClickSlug("giftManager", slug.giftManager)}
+        className={param == "giftManager" ? " active" : ""}
+      >
+        <ListItemIcon>
+          <CardGiftcardIcon />
+        </ListItemIcon>
+        <ListItemText primary="Quà tặng" />
+      </ListItem>
       <ListItem
         button
         onClick={() => handleClickSlug("configManager", slug.configManager)}

@@ -10,4 +10,9 @@ export default {
   configManager: "/admin/config-manager",
 
   editCard: "/admin/edit-card",
+
+  voucherManager: "/admin/voucher-manager",
+  giftManager: "/admin/gift-manager",
+  addGift: "/admin/add-gift",
+  editGift: "/admin/edit-gift",
 };

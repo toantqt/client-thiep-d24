@@ -1,3 +1,6 @@
 .MuiDataGrid-footerContainer {
   display: none !important;
 }
+.table .MuiDataGrid-footerContainer {
+  display: block !important;
+}

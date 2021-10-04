@@ -7,6 +7,9 @@ import OrderManager from "../../features/Admin/pages/Order Manager/OrderManager"
 import ConfirmOrder from "../../features/Admin/pages/Confirm Order/ConfirmOrder";
 import EditProduct from "../../features/Admin/pages/Product Manager/EditProduct";
 import ConfigManager from "../../features/Admin/pages/Config Manager/ConfigManager";
+import GiftManager from "../../features/Admin/pages/Gift Manager/GiftManager";
+import AddGift from "../../features/Admin/pages/Gift Manager/AddGift";
+import EditGift from "../../features/Admin/pages/Gift Manager/EditGift";
 function AdminRoutes(props) {
   //   <Route exact path={SLUGS.dashboard} component={DashboardComponent} />;
   const loading = props.handleLoading;
@@ -55,6 +58,24 @@ function AdminRoutes(props) {
         exact
         path={slug.configManager}
         render={() => <ConfigManager handleLoading={loading} />}
+      />
+
+      <Route
+        exact
+        path={slug.giftManager}
+        render={() => <GiftManager handleLoading={loading} />}
+      />
+
+      <Route
+        exact
+        path={slug.addGift}
+        render={() => <AddGift handleLoading={loading} />}
+      />
+
+      <Route
+        exact
+        path={slug.editGift}
+        render={(props) => <EditGift {...props} handleLoading={loading} />}
       />
     </Switch>
   );

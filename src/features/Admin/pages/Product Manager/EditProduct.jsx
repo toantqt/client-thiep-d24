@@ -165,6 +165,7 @@ export default function EditProduct(props) {
       quantity: quantity,
       item: item,
       image: imagePreview,
+      size: size,
     };
 
     if (data.id === "" || data.price === "" || !data.image) {

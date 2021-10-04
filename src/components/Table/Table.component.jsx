@@ -16,20 +16,33 @@ export default function TableComponent(props) {
   };
   return (
     <div style={{ height: "600px", width: "100%" }}>
-      <DataGrid
-        rows={props?.rows}
-        columns={props?.columns}
-        disableColumnMenu={true}
-        rowHeight={props?.rowHeight}
-      />
-      <TablePagination
-        component="div"
-        count={props?.count}
-        page={props?.page}
-        onPageChange={handleChangePage}
-        rowsPerPage={rowsPerPage}
-        rowsPerPageOptions={[]}
-      />
+      {props.count ? (
+        <>
+          {" "}
+          <DataGrid
+            rows={props?.rows}
+            columns={props?.columns}
+            disableColumnMenu={true}
+            rowHeight={props?.rowHeight}
+          />
+          <TablePagination
+            component="div"
+            count={props?.count}
+            page={props?.page}
+            onPageChange={handleChangePage}
+            rowsPerPage={rowsPerPage}
+            rowsPerPageOptions={[]}
+          />
+        </>
+      ) : (
+        <DataGrid
+          rows={props?.rows}
+          columns={props?.columns}
+          rowHeight={props?.rowHeight}
+          pageSize={20}
+          className="table"
+        />
+      )}
     </div>
   );
 }
