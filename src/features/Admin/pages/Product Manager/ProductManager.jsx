@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import slug from "../../../../resources/slug";
 import TableComponent from "../../../../components/Table/Table.component";
 import queryString from "query-string";
-import { deleteCard, getProduct } from "../../../../api/adminAPI";
+import { deleteCard, getCountPage, getProduct } from "../../../../api/adminAPI";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import IconButton from "@material-ui/core/IconButton";
@@ -20,15 +20,24 @@ export default function ProductManager(props) {
   const [open, setOpen] = useState(false);
   const [reload, setReload] = useState(false);
   const [searchs, setSearch] = useState("");
+  const [page, setPage] = useState(0);
+  const [count, setCount] = useState();
 
   useEffect(async () => {
     props.handleLoading(true);
-    await getProduct(product).then((res) => {
+    await getCountPage(product).then((res) => {
+      setCount(res.data);
+    });
+    await getProduct(product, page).then((res) => {
       console.log(res);
       setProducts(res.data);
       props.handleLoading(false);
     });
-  }, [product, reload]);
+  }, [product, reload, page]);
+
+  useEffect(() => {
+    setPage(0);
+  }, [product]);
 
   const handleClickDelete = (id) => {
     setProductID(id);
@@ -132,6 +141,9 @@ export default function ProductManager(props) {
     },
   ];
 
+  const handleChangePage = (page) => {
+    setPage(page);
+  };
   return (
     <Grid>
       <div className="header-title">
@@ -148,7 +160,14 @@ export default function ProductManager(props) {
       </div>
 
       <div className="mt-3">
-        <TableComponent rows={rows} columns={columns} rowHeight={200} />
+        <TableComponent
+          rows={rows}
+          columns={columns}
+          rowHeight={200}
+          count={count}
+          page={page}
+          handleChangePage={handleChangePage}
+        />
       </div>
       <ModalDelete
         open={open}

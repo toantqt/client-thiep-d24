@@ -3,8 +3,8 @@ import { getAccessToken } from "../auth/auth";
 import jwt_decode from "jwt-decode";
 import { getRole } from "../auth/auth";
 
-const url = "https://server-thiepd24.herokuapp.com";
-// const url = "http://localhost:6688";
+// const url = "https://server-thiepd24.herokuapp.com";
+const url = "http://localhost:6688";
 
 export const login = async (data) => {
   return await axios
@@ -55,9 +55,9 @@ export const approveUser = async (data) => {
     });
 };
 
-export const getProduct = async (type) => {
+export const getProduct = async (type, page) => {
   return await axios
-    .get(`${url}/get-card/${type}`, {
+    .get(`${url}/get-card/${type}/${page}`, {
       headers: { Authorization: `${getAccessToken()}` },
     })
     .then((res) => {
@@ -161,6 +161,19 @@ export const getPointConfig = async () => {
 export const updatePointConfig = async (data) => {
   return await axios
     .post(`${url}/update-point-coinfig`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
+
+export const getCountPage = async (type) => {
+  return await axios
+    .get(`${url}/get-count-card/${type}`, {
       headers: { Authorization: `${getAccessToken()}` },
     })
     .then((res) => {
