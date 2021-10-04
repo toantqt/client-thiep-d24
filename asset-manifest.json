@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/client-thiep-d24/static/css/main.01fcd98a.chunk.css",
-    "main.js": "/client-thiep-d24/static/js/main.6571879b.chunk.js",
-    "main.js.map": "/client-thiep-d24/static/js/main.6571879b.chunk.js.map",
-    "runtime-main.js": "/client-thiep-d24/static/js/runtime-main.8e515b08.js",
-    "runtime-main.js.map": "/client-thiep-d24/static/js/runtime-main.8e515b08.js.map",
-    "static/js/2.5ba11493.chunk.js": "/client-thiep-d24/static/js/2.5ba11493.chunk.js",
-    "static/js/2.5ba11493.chunk.js.map": "/client-thiep-d24/static/js/2.5ba11493.chunk.js.map",
-    "static/js/3.4d863c90.chunk.js": "/client-thiep-d24/static/js/3.4d863c90.chunk.js",
-    "static/js/3.4d863c90.chunk.js.map": "/client-thiep-d24/static/js/3.4d863c90.chunk.js.map",
+    "main.css": "/client-thiep-d24/static/css/main.c3dcc9ae.chunk.css",
+    "main.js": "/client-thiep-d24/static/js/main.b53e858e.chunk.js",
+    "main.js.map": "/client-thiep-d24/static/js/main.b53e858e.chunk.js.map",
+    "runtime-main.js": "/client-thiep-d24/static/js/runtime-main.f2a27148.js",
+    "runtime-main.js.map": "/client-thiep-d24/static/js/runtime-main.f2a27148.js.map",
+    "static/js/2.d0dc5155.chunk.js": "/client-thiep-d24/static/js/2.d0dc5155.chunk.js",
+    "static/js/2.d0dc5155.chunk.js.map": "/client-thiep-d24/static/js/2.d0dc5155.chunk.js.map",
+    "static/js/3.cb4baea4.chunk.js": "/client-thiep-d24/static/js/3.cb4baea4.chunk.js",
+    "static/js/3.cb4baea4.chunk.js.map": "/client-thiep-d24/static/js/3.cb4baea4.chunk.js.map",
     "index.html": "/client-thiep-d24/index.html",
-    "static/css/main.01fcd98a.chunk.css.map": "/client-thiep-d24/static/css/main.01fcd98a.chunk.css.map",
-    "static/js/2.5ba11493.chunk.js.LICENSE.txt": "/client-thiep-d24/static/js/2.5ba11493.chunk.js.LICENSE.txt",
+    "static/css/main.c3dcc9ae.chunk.css.map": "/client-thiep-d24/static/css/main.c3dcc9ae.chunk.css.map",
+    "static/js/2.d0dc5155.chunk.js.LICENSE.txt": "/client-thiep-d24/static/js/2.d0dc5155.chunk.js.LICENSE.txt",
     "static/media/loading.be537609.gif": "/client-thiep-d24/static/media/loading.be537609.gif",
     "static/media/logomenu.b1f8cc1b.png": "/client-thiep-d24/static/media/logomenu.b1f8cc1b.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.8e515b08.js",
-    "static/js/2.5ba11493.chunk.js",
-    "static/css/main.01fcd98a.chunk.css",
-    "static/js/main.6571879b.chunk.js"
+    "static/js/runtime-main.f2a27148.js",
+    "static/js/2.d0dc5155.chunk.js",
+    "static/css/main.c3dcc9ae.chunk.css",
+    "static/js/main.b53e858e.chunk.js"
   ]
 }
