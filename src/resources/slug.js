@@ -15,4 +15,7 @@ export default {
   giftManager: "/admin/gift-manager",
   addGift: "/admin/add-gift",
   editGift: "/admin/edit-gift",
+
+  addVoucherUser: "/admin/voucher-user",
+  addVoucherStore: "/admin/voucher-store",
 };

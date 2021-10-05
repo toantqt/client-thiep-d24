@@ -253,3 +253,55 @@ export const editGift = async (data) => {
       return error.message;
     });
 };
+
+export const getVoucherUser = async () => {
+  return await axios
+    .get(`${url}/get-system-voucher`, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
+
+export const getVoucherStore = async () => {
+  return await axios
+    .get(`${url}/get-voucher`, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
+
+export const addSystemVoucher = async (data) => {
+  return await axios
+    .post(`${url}/add-system-voucher`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
+
+export const deleteSystemVoucher = async (data) => {
+  return await axios
+    .post(`${url}/delete-system-voucher`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
