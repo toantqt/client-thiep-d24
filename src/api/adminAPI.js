@@ -4,7 +4,7 @@ import jwt_decode from "jwt-decode";
 import { getRole } from "../auth/auth";
 
 const url = "https://server-thiepd24.herokuapp.com";
-// const url = "http://localhost:6688";
+const url = "http://localhost:6688";
 
 export const login = async (data) => {
   return await axios
@@ -322,6 +322,58 @@ export const addVoucherStore = async (data) => {
 export const deleteVoucherStore = async (data) => {
   return await axios
     .post(`${url}/delete-voucher-store`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
+
+export const getDetailsVoucherStore = async (voucherID) => {
+  return await axios
+    .get(`${url}/get-details-voucher-store/${voucherID}`, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
+
+export const editVoucherStore = async (data) => {
+  return await axios
+    .post(`${url}/edit-voucher-store`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
+
+export const getDetailsVoucherUser = async (voucherID) => {
+  return await axios
+    .get(`${url}/get-details-voucher/${voucherID}`, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
+
+export const editVoucherUser = async (data) => {
+  return await axios
+    .post(`${url}/edit-voucher-user`, data, {
       headers: { Authorization: `${getAccessToken()}` },
     })
     .then((res) => {

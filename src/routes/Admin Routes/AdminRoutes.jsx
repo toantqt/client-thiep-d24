@@ -13,6 +13,8 @@ import EditGift from "../../features/Admin/pages/Gift Manager/EditGift";
 import VoucherManager from "../../features/Admin/pages/Voucher Manager/VoucherManager";
 import AddVoucherUser from "../../features/Admin/pages/Voucher Manager/AddVoucherUser";
 import AddVoucherStore from "../../features/Admin/pages/Voucher Manager/AddVoucherStore";
+import EditVoucherStore from "../../features/Admin/pages/Voucher Manager/EditVoucherStore";
+import EditVoucherUser from "../../features/Admin/pages/Voucher Manager/EditVoucherUser";
 function AdminRoutes(props) {
   //   <Route exact path={SLUGS.dashboard} component={DashboardComponent} />;
   const loading = props.handleLoading;
@@ -96,6 +98,22 @@ function AdminRoutes(props) {
         exact
         path={slug.addVoucherStore}
         render={() => <AddVoucherStore handleLoading={loading} />}
+      />
+
+      <Route
+        exact
+        path={slug.editVoucherStore}
+        render={(props) => (
+          <EditVoucherStore {...props} handleLoading={loading} />
+        )}
+      />
+
+      <Route
+        exact
+        path={slug.editVoucherUser}
+        render={(props) => (
+          <EditVoucherUser {...props} handleLoading={loading} />
+        )}
       />
     </Switch>
   );

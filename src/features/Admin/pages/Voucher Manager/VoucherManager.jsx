@@ -82,7 +82,7 @@ export default function VoucherManager(props) {
               variant="contained"
               style={{ color: "blue" }}
               onClick={() => {
-                // handleClickEdit(action.row.action);
+                handleClickEdit(action.row.type, action.row.action);
               }}
             >
               <EditIcon />
@@ -118,8 +118,12 @@ export default function VoucherManager(props) {
     }
   };
 
-  const handleClickEdit = (id) => {
-    history.push({ pathname: slug.editGift, search: `?id=${id}` });
+  const handleClickEdit = (type, id) => {
+    if (type === "user") {
+      history.push({ pathname: slug.editVoucherUser, search: `?id=${id}` });
+    } else {
+      history.push({ pathname: slug.editVoucherStore, search: `?id=${id}` });
+    }
   };
 
   const handleClickAdd = (type) => {

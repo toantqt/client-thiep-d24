@@ -18,4 +18,7 @@ export default {
 
   addVoucherUser: "/admin/voucher-user",
   addVoucherStore: "/admin/voucher-store",
+
+  editVoucherUser: "/admin/edit-voucher-user",
+  editVoucherStore: "/admin/edit-voucher-store",
 };
