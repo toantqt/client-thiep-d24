@@ -14,6 +14,7 @@ import {
   getVoucherUser,
   getVoucherStore,
   deleteSystemVoucher,
+  deleteVoucherStore,
 } from "../../../../api/adminAPI";
 
 export default function VoucherManager(props) {
@@ -26,6 +27,7 @@ export default function VoucherManager(props) {
   const [reload, setReload] = useState(false);
   const [voucherUser, setVoucherUser] = useState([]);
   const [voucherStore, setVoucherStore] = useState([]);
+  const [type, setType] = useState("");
 
   useEffect(async () => {
     props.handleLoading(true);
@@ -41,12 +43,12 @@ export default function VoucherManager(props) {
   const handleClickDelete = (type, id) => {
     setSelectID(id);
 
-    if (type === "user") {
-      setOpenConfirm(true);
-    }
+    setOpenConfirm(true);
+    setType(type);
   };
   const handleCloseConfirm = () => {
     setSelectID("");
+    setType("");
     setOpenConfirm(false);
   };
   const rows1 = voucherUser.map((e, index) => {
@@ -103,10 +105,17 @@ export default function VoucherManager(props) {
     const data = {
       voucherID: selectID,
     };
-    await deleteSystemVoucher(data).then((res) => {
-      handleCloseConfirm();
-      setReload(!reload);
-    });
+    if (type === "user") {
+      await deleteSystemVoucher(data).then((res) => {
+        handleCloseConfirm();
+        setReload(!reload);
+      });
+    } else {
+      await deleteVoucherStore(data).then((res) => {
+        handleCloseConfirm();
+        setReload(!reload);
+      });
+    }
   };
 
   const handleClickEdit = (id) => {
@@ -164,7 +173,7 @@ export default function VoucherManager(props) {
                   textTransform: "none",
                   float: "right",
                 }}
-                // onClick={() => handleClickAdd("store")}
+                onClick={() => handleClickAdd("store")}
               >
                 Thêm mới
               </Button>

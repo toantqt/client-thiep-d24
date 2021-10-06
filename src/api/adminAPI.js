@@ -305,3 +305,29 @@ export const deleteSystemVoucher = async (data) => {
       return error.message;
     });
 };
+
+export const addVoucherStore = async (data) => {
+  return await axios
+    .post(`${url}/add-voucher-store`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
+
+export const deleteVoucherStore = async (data) => {
+  return await axios
+    .post(`${url}/delete-voucher-store`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};

@@ -64,7 +64,7 @@ export default function AddVoucherUser(props) {
       endDay: start.getTime(),
     };
     await addSystemVoucher(data).then((res) => {
-      console.log(res);
+      history.push(slug.voucherManager);
     });
   };
 
