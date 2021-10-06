@@ -188,7 +188,7 @@ export default function VoucherManager(props) {
         <ModalDelete
           open={openConfirm}
           handleClose={handleCloseConfirm}
-          title="Xác nhận xóa banner"
+          title="Xác nhận xóa voucher"
           handleDelete={handleDeleteGift}
         />
       </div>
