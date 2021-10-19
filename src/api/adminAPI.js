@@ -132,6 +132,8 @@ export const updateCard = async (data) => {
   formData.append("size", data.size);
   formData.append("price", data.price);
   formData.append("quantity", data.quantity);
+  formData.append("type", data.type);
+
   formData.append("item", JSON.stringify(data.item));
 
   return await axios

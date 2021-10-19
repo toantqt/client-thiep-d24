@@ -7,6 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import ImagePreivews from "../../../../components/Image Previews/ImagePreviews";
 import slug from "../../../../resources/slug";
+import CategorySelect from "../../../../components/Select/CategorySelect";
 export default function EditProduct(props) {
   const history = useHistory();
   const search = queryString.parse(props.location.search);
@@ -20,6 +21,8 @@ export default function EditProduct(props) {
   const [item, setItem] = useState([]);
   const [itemAdd, setItemAdd] = useState({ name: "", price: "" });
   const [defaultItem, setDefaultItem] = useState({ name: "", price: "" });
+  const [defaultSelect, setDefaultSelect] = useState();
+  const [type, setType] = useState();
 
   useEffect(async () => {
     props.handleLoading(true);
@@ -32,6 +35,8 @@ export default function EditProduct(props) {
         setQuantity(res.data.quantity);
         setPrice(res.data.price);
         setItem(res.data.item);
+        setType(res.data.type);
+        setDefaultSelect(res.data.type);
       });
       props.handleLoading(false);
     }
@@ -157,6 +162,16 @@ export default function EditProduct(props) {
     }
   };
 
+  const handleChangeType = (value) => {
+    if (value !== "") {
+      setType(value);
+    } else {
+      setType("");
+    }
+  };
+
+  console.log(type);
+
   const handleSubmit = async () => {
     const data = {
       cardID: card._id,
@@ -166,9 +181,15 @@ export default function EditProduct(props) {
       item: item,
       image: imagePreview,
       size: size,
+      type: type,
     };
 
-    if (data.id === "" || data.price === "" || !data.image) {
+    if (
+      data.id === "" ||
+      data.price === "" ||
+      !data.image ||
+      data.type === ""
+    ) {
       alert("Xin vui lòng điền đầy đủ thông tin");
     } else {
       await updateCard(data).then((res) => {
@@ -188,7 +209,13 @@ export default function EditProduct(props) {
         <Grid item lg={4} md={4} xs={12}>
           <div className="news-title ">
             <span>Loại thiệp:</span>
-            <TextField
+            {defaultSelect ? (
+              <CategorySelect category={type} handleChange={handleChangeType} />
+            ) : (
+              <></>
+            )}
+
+            {/* <TextField
               id="outlined-basic"
               variant="outlined"
               style={{ width: "100%" }}
@@ -197,7 +224,7 @@ export default function EditProduct(props) {
               key={card?.type}
               defaultValue={card?.type}
               // onChange={handleChangeTitle}
-            />
+            /> */}
           </div>
         </Grid>
         <Grid item lg={4} md={4} xs={12}>
