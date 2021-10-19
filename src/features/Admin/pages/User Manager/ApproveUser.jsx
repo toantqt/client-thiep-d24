@@ -39,7 +39,6 @@ export default function ApproveUser(props) {
         phoneNumber: e.user.phoneNumber,
         address: e.user.address,
         code: e.code.shareCode,
-        approved: e.user.approved,
         created: formatDate(e.createdAt),
         action: e.user,
       };
@@ -51,27 +50,6 @@ export default function ApproveUser(props) {
     { field: "address", headerName: "Địa chỉ", width: 160 },
     { field: "code", headerName: "Code", width: 160 },
     { field: "created", headerName: "Ngày tạo", width: 160 },
-    {
-      field: "approved",
-      headerName: "Duyệt",
-      width: 130,
-      renderCell: (approved) => {
-        if (approved.row.approved) {
-          return (
-            <Chip
-              label="Đã duyệt"
-              clickable
-              color="primary"
-              variant="outlined"
-            />
-          );
-        } else {
-          return (
-            <Chip label="Chờ duyệt" color="secondary" variant="outlined" />
-          );
-        }
-      },
-    },
     {
       field: "action",
       headerName: "Chức năng",

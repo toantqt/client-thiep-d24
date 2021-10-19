@@ -29,7 +29,7 @@ export default function ProductManager(props) {
       setCount(res.data);
     });
     await getProduct(product, page).then((res) => {
-      console.log(res);
+      console.log(res.data);
       setProducts(res.data);
       props.handleLoading(false);
     });

@@ -62,10 +62,6 @@ export default function UserManager(props) {
               variant="outlined"
             />
           );
-        } else {
-          return (
-            <Chip label="Chờ duyệt" color="secondary" variant="outlined" />
-          );
         }
       },
     },
