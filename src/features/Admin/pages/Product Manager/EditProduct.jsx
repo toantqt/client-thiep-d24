@@ -17,7 +17,7 @@ export default function EditProduct(props) {
   const [id, setID] = useState("");
   const [size, setSize] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
   const [item, setItem] = useState([]);
   const [itemAdd, setItemAdd] = useState({ name: "", price: "" });
   const [defaultItem, setDefaultItem] = useState({ name: "", price: "" });
@@ -183,16 +183,13 @@ export default function EditProduct(props) {
       size: size,
       type: type,
     };
+    // console.log(data);
 
-    if (
-      data.id === "" ||
-      data.price === "" ||
-      !data.image ||
-      data.type === ""
-    ) {
+    if (data.id === "" || !data.price || !data.image || data.type === "") {
       alert("Xin vui lòng điền đầy đủ thông tin");
     } else {
       await updateCard(data).then((res) => {
+        // console.log(res);
         history.push({
           pathname: slug.productManager,
           search: `?product=${card.type}`,

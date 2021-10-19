@@ -29,18 +29,22 @@ export default function UserManager(props) {
     props.handleLoading(false);
   }, [reload]);
 
-  const rows = user.map((e, index) => {
-    return {
-      id: index,
-      fullName: e.user.fullName,
-      phoneNumber: e.user.phoneNumber,
-      address: e.user.address,
-      code: e.code.shareCode,
-      approved: e.user.approved,
-      created: formatDate(e.createdAt),
-      action: e.user,
-    };
-  });
+  const rows = user
+    .filter((user) => {
+      return user.user.approved;
+    })
+    .map((e, index) => {
+      return {
+        id: index,
+        fullName: e.user.fullName,
+        phoneNumber: e.user.phoneNumber,
+        address: e.user.address,
+        code: e.code.shareCode,
+        approved: e.user.approved,
+        created: formatDate(e.createdAt),
+        action: e.user,
+      };
+    });
 
   const columns = [
     { field: "fullName", headerName: "Tên", width: 160 },
@@ -80,17 +84,6 @@ export default function UserManager(props) {
               }}
             >
               <BlockIcon />
-            </IconButton>
-          );
-        } else {
-          return (
-            <IconButton
-              style={{ color: "green" }}
-              onClick={() => {
-                handleClickModalApprove(action.row.action);
-              }}
-            >
-              <CheckBoxIcon />
             </IconButton>
           );
         }
