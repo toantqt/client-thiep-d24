@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/client-thiep-d24/static/css/main.c3dcc9ae.chunk.css",
-    "main.js": "/client-thiep-d24/static/js/main.9f85c636.chunk.js",
-    "main.js.map": "/client-thiep-d24/static/js/main.9f85c636.chunk.js.map",
+    "main.js": "/client-thiep-d24/static/js/main.fa8cb44d.chunk.js",
+    "main.js.map": "/client-thiep-d24/static/js/main.fa8cb44d.chunk.js.map",
     "runtime-main.js": "/client-thiep-d24/static/js/runtime-main.637334c1.js",
     "runtime-main.js.map": "/client-thiep-d24/static/js/runtime-main.637334c1.js.map",
     "static/js/2.a469eea2.chunk.js": "/client-thiep-d24/static/js/2.a469eea2.chunk.js",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.637334c1.js",
     "static/js/2.a469eea2.chunk.js",
     "static/css/main.c3dcc9ae.chunk.css",
-    "static/js/main.9f85c636.chunk.js"
+    "static/js/main.fa8cb44d.chunk.js"
   ]
 }
